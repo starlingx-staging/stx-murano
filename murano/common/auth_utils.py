@@ -47,11 +47,11 @@ def _get_keystone_auth(trust_id=None):
             'auth_url': auth_uri.replace('v2.0', 'v3'),
             'username': username,
             'password': password,
-            'user_domain_name': 'default'
+            'user_domain_name': 'Default'
         }
         if not trust_id:
             kwargs['project_name'] = project_name
-            kwargs['project_domain_name'] = 'default'
+            kwargs['project_domain_name'] = 'Default'
         else:
             kwargs['trust_id'] = trust_id
         auth = identity.Password(**kwargs)
