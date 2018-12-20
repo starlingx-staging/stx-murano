@@ -1,0 +1,31 @@
+From 7d5fbc42f6dedef681c0190d7a73dbbd6eefe1a9 Mon Sep 17 00:00:00 2001
+From: Jerry Sun <jerry.sun@windriver.com>
+Date: Thu, 14 Dec 2017 08:56:57 -0500
+Subject: [PATCH 3/3] Pike Rebase Murano
+
+Fixed domain issue when deploying murano packages
+---
+ murano/common/auth_utils.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/murano/common/auth_utils.py b/murano/common/auth_utils.py
+index 8f9fb8b..5239426 100644
+--- a/murano/common/auth_utils.py
++++ b/murano/common/auth_utils.py
+@@ -47,11 +47,11 @@ def _get_keystone_auth(trust_id=None):
+             'auth_url': auth_uri.replace('v2.0', 'v3'),
+             'username': username,
+             'password': password,
+-            'user_domain_name': 'default'
++            'user_domain_name': 'Default'
+         }
+         if not trust_id:
+             kwargs['project_name'] = project_name
+-            kwargs['project_domain_name'] = 'default'
++            kwargs['project_domain_name'] = 'Default'
+         else:
+             kwargs['trust_id'] = trust_id
+         auth = identity.Password(**kwargs)
+-- 
+2.7.4
+
